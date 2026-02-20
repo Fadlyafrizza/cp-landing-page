@@ -1,5 +1,5 @@
 <script setup>
-const waNumber = '6281234567890' // Configurable WhatsApp number
+const waNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '6281234567890'
 const waMessage = encodeURIComponent('Hello! I\'m interested in your services. Can we discuss?')
 const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`
 </script>

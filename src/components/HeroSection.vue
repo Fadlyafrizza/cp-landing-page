@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -29,6 +29,10 @@ function cycleWords() {
 onMounted(() => {
   setTimeout(() => { visible.value = true }, 100)
   cycleWords()
+})
+
+onUnmounted(() => {
+  clearInterval(wordInterval)
 })
 </script>
 

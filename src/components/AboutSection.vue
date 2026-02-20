@@ -12,6 +12,7 @@ const counters = ref(stats.map(() => 0))
 const sectionRef = ref(null)
 let started = false
 let observer
+const timers = []
 
 function animateCounter(index, target) {
   const duration = 2000
@@ -26,6 +27,7 @@ function animateCounter(index, target) {
       counters.value[index] = Math.floor(current)
     }
   }, 16)
+  timers.push(timer)
 }
 
 onMounted(() => {
@@ -43,6 +45,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (observer) observer.disconnect()
+  timers.forEach((t) => clearInterval(t))
 })
 </script>
 

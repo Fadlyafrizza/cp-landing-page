@@ -4,7 +4,8 @@ import { RouterLink } from 'vue-router'
 import Navbar from '../components/Navbar.vue'
 import FooterSection from '../components/FooterSection.vue'
 
-const WEB3FORMS_KEY = '55c57c86-a4c2-4c83-af0e-9c3d8f3a0f2d' // Web3Forms public access key
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL
 
 const form = reactive({
   name: '',
@@ -76,7 +77,7 @@ async function submitForm() {
   try {
     const payload = {
       access_key: WEB3FORMS_KEY,
-      to: 'vadliafrizza80@gmail.com',
+      to: CONTACT_EMAIL,
       name: form.name,
       email: form.email,
       phone: form.phone || 'N/A',
